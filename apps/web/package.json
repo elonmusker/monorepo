@@ -1,0 +1,27 @@
+{
+  "name": "@monorepo/web",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --port 3000",
+    "start": "next start",
+    "clean": "rm -rf .next",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@monorepo/database": "workspace:*",
+    "@monorepo/shared": "workspace:*",
+    "@monorepo/ui": "workspace:*",
+    "next": "^15.1.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@monorepo/tsconfig": "workspace:*",
+    "@types/node": "^22.10.7",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "typescript": "^5.7.3"
+  }
+}
