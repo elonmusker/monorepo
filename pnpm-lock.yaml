@@ -31,6 +31,22 @@ importers:
         specifier: ^5.7.3
         version: 5.9.3
 
+  packages/shared:
+    dependencies:
+      '@monorepo/database':
+        specifier: workspace:*
+        version: link:../database
+    devDependencies:
+      '@monorepo/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/node':
+        specifier: ^22.15.0
+        version: 22.19.15
+      typescript:
+        specifier: ^5.7.3
+        version: 5.9.3
+
   packages/tsconfig: {}
 
 packages:
