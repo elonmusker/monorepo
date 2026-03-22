@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Monorepo Mobile",
+    "slug": "monorepo-mobile",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "scheme": "monorepo",
+    "platforms": ["ios", "android"],
+    "newArchEnabled": true
+  }
+}

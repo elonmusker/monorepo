@@ -1,0 +1,27 @@
+{
+  "name": "@monorepo/mobile",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/App.tsx",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "clean": "rm -rf .expo",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@monorepo/database": "workspace:*",
+    "@monorepo/shared": "workspace:*",
+    "expo": "~52.0.23",
+    "expo-status-bar": "~2.0.1",
+    "react": "18.3.1",
+    "react-native": "0.76.6"
+  },
+  "devDependencies": {
+    "@monorepo/tsconfig": "workspace:*",
+    "@types/node": "^20.17.12",
+    "@types/react": "^18.3.18",
+    "typescript": "^5.7.3"
+  }
+}
