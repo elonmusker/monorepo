@@ -23,12 +23,11 @@ reviewsRouter.get("/target/:targetId", async (req, res) => {
 
 reviewsRouter.post("/", async (req, res) => {
   try {
-    const { userId, targetId, rating, comment } = req.body as {
-      userId: string;
-      targetId: string;
-      rating: number;
-      comment?: string;
-    };
+    const body = req.body as Record<string, unknown>;
+    const userId = typeof body.userId === "string" ? body.userId : undefined;
+    const targetId = typeof body.targetId === "string" ? body.targetId : undefined;
+    const rating = typeof body.rating === "number" ? body.rating : undefined;
+    const comment = typeof body.comment === "string" ? body.comment : undefined;
 
     if (!userId || !targetId || rating === undefined) {
       res

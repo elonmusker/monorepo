@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@monorepo/tsconfig": "workspace:*",
-    "@types/node": "^20.17.12",
+    "@types/node": "^22.10.7",
     "@types/react": "^18.3.18",
     "typescript": "^5.7.3"
   }
