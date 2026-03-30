@@ -3,10 +3,17 @@ import type { UserRow, UserInsert, UserUpdate } from '@repo/db';
 
 const USERS_KEY = ['users'];
 
+async function handleResponse<T>(res: Response, errorMsg: string): Promise<T> {
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`${errorMsg} (${res.status}${text ? ': ' + text : ''})`);
+  }
+  return res.json();
+}
+
 async function fetchUsers(): Promise<UserRow[]> {
   const res = await fetch('/api/users');
-  if (!res.ok) throw new Error('Failed to fetch users');
-  const json = await res.json();
+  const json = await handleResponse<{ data: UserRow[] }>(res, 'Failed to fetch users');
   return json.data ?? [];
 }
 
@@ -16,8 +23,7 @@ async function createUser(input: UserInsert): Promise<UserRow> {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(input),
   });
-  if (!res.ok) throw new Error('Failed to create user');
-  const json = await res.json();
+  const json = await handleResponse<{ data: UserRow }>(res, 'Failed to create user');
   return json.data;
 }
 
@@ -30,14 +36,16 @@ async function updateUser({
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(input),
   });
-  if (!res.ok) throw new Error('Failed to update user');
-  const json = await res.json();
+  const json = await handleResponse<{ data: UserRow }>(res, 'Failed to update user');
   return json.data;
 }
 
 async function deleteUser(id: string): Promise<void> {
   const res = await fetch(`/api/users/${id}`, { method: 'DELETE' });
-  if (!res.ok) throw new Error('Failed to delete user');
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Failed to delete user (${res.status}${text ? ': ' + text : ''})`);
+  }
 }
 
 export function useUsersQuery() {
