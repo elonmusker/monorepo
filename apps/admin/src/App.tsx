@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
 import Posts from './pages/Posts';
+import UsersCrud from './pages/UsersCrud';
 
 function Sidebar() {
   const navClass = ({ isActive }: { isActive: boolean }) =>
@@ -27,6 +28,9 @@ function Sidebar() {
       <NavLink to="/posts" className={navClass}>
         Posts
       </NavLink>
+      <NavLink to="/users-crud" className={navClass}>
+        用户管理 (CRUD)
+      </NavLink>
     </aside>
   );
 }
@@ -41,6 +45,7 @@ export default function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/users" element={<Users />} />
             <Route path="/posts" element={<Posts />} />
+            <Route path="/users-crud" element={<UsersCrud />} />
           </Routes>
         </main>
       </div>
